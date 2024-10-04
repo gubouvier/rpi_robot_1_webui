@@ -1,10 +1,10 @@
 "use client";
 
-import { ROBOT_URL } from './config';
+import { ROBOT_URL } from '../config/robot';
 import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
-import Keypad from './components/Keypad';
-import InfoBox from './components/InfoBox';
+import Keypad from '../components/Keypad';
+import InfoBox from '../components/InfoBox';
 
 const Home = () => {
   const [pressedKeys, setPressedKeys] = useState<Set<string>>(new Set());
@@ -87,9 +87,11 @@ const Home = () => {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-40">
+      <h1>RPI robot dashboard</h1>
       <div className="flex justify-center">
         <div className="rounded-lg shadow-lg bg-white justify-center">
-          <iframe src='http://rpiz2-2:5000/video_feed' className="w-[640px] h-[480px]"></iframe>
+          {/* <iframe src='http://rpiz2-2:5000/video_feed' className="w-[640px] h-[480px]"></iframe> */}
+          <iframe src='/vercel.svg' className="w-[640px] h-[480px]"></iframe>
           <div className="p-6 flex space-x-10 justify-center">
             <Keypad keys={['ArrowUp', 'ArrowLeft ArrowDown ArrowRight']} pressedKeys={pressedKeys} />
             <Keypad keys={['w', 'a s d']} pressedKeys={pressedKeys} />
